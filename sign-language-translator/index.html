@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Sign Language Translator</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>AI Sign Language Translator</h1>
+    <p>Dual View • Voice & Animation</p>
+  </header>
+
+  <!-- VIDEO + ANIMATION -->
+  <div class="main-grid">
+
+    <!-- LIVE CAMERA -->
+    <div class="card">
+      <h3>🎥 Live Camera</h3>
+      <video id="camera" autoplay playsinline></video>
+
+      <!-- OUTPUT VOICE -->
+      <div class="voice-box">
+        <button class="voice-btn">
+          <i class="fa-solid fa-volume-high"></i> Output Voice
+        </button>
+        <div class="voice-wave"></div>
+      </div>
+    </div>
+
+    <!-- ANIMATION -->
+    <div class="card">
+      <h3>✋ Sign Animation</h3>
+      <div class="animation-box">
+        <div class="ecg"></div>
+        <span>Animated Sign Output</span>
+      </div>
+
+      <!-- INPUT VOICE -->
+      <div class="voice-box">
+        <button class="voice-btn">
+          <i class="fa-solid fa-microphone"></i> Input Voice
+        </button>
+        <div class="voice-wave"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TRANSLATED TEXT -->
+ <div class="main-grid">
+  <div class="card">
+    <h3>🌐 English Text</h3>
+    <textarea id="enText" placeholder="Type English text..."></textarea>
+  </div>
+
+  <div class="card">
+    <h3>🌐 বাংলা Text</h3>
+    <textarea id="bnText" placeholder="বাংলা টেক্সট লিখুন..."></textarea>
+  </div>
+</div>
+
+<div class="card">
+  <button class="voice-btn" onclick="translateText()">
+    🔁 Translate & Save
+  </button>
+</div>
+
+
+  <footer>© 2025 AI/ML Portfolio Project</footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

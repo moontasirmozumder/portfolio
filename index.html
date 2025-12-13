@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Moontasir Mozumder | Portfolio</title>
+
+  <meta name="description" content="Moontasir Mozumder | CSE Student | AI, Image Processing, Robotics & Compiler Design Portfolio">
+  <meta name="keywords" content="Moontasir Mozumder, AI, Robotics, Image Processing, Compiler Design">
+  <meta name="author" content="Moontasir Mozumder">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Binary Rain Background -->
+<canvas id="binaryRain"></canvas>
+
+<header id="home" class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>PORTFOLIO</h1>
+
+      <p class="intro lang en">
+        Hi, I’m <strong>Moontasir Mozumder</strong><br>
+        <span id="typing"></span>
+      </p>
+
+      <p class="intro lang bn hidden">
+        আমি <strong>মুনতাসির মজুমদার</strong><br>
+        AI • ইমেজ প্রসেসিং • রোবোটিক্স • কম্পাইলার ডিজাইন
+      </p>
+
+      <button id="langToggle">বাংলা</button>
+    </div>
+
+    <div class="hero-photo">
+      <img src="photo.png" alt="Moontasir Mozumder">
+    </div>
+  </div>
+</header>
+
+<nav class="navbar">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about" class="section">
+  <h2>About Me</h2>
+  <div class="card">
+    <p class="lang en">
+      I am a Computer Science and Engineering student with strong interests in AI,
+      image processing, robotics, and compiler design.
+    </p>
+
+    <p class="lang bn hidden">
+      আমি একজন কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং শিক্ষার্থী।
+      AI, ইমেজ প্রসেসিং, রোবোটিক্স ও কম্পাইলার ডিজাইনে আগ্রহী।
+    </p>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <h2>Skills</h2>
+
+  <div class="filters" id="skillFilters">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="programming">Programming</button>
+    <button data-filter="ai">AI</button>
+    <button data-filter="hardware">Hardware</button>
+  </div>
+
+  <div class="grid" id="skillGrid">
+    <div class="card" data-category="programming">C, C++, Python, JavaScript</div>
+    <div class="card" data-category="ai">Deep Learning, OpenCV</div>
+    <div class="card" data-category="hardware">Robotics</div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <h2>Projects</h2>
+
+  <div class="filters" id="projectFilters">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="ai">AI/ML</button>
+    <button data-filter="iot">IOT</button>
+    <button data-filter="robotics">Robotics</button>
+  </div>
+
+  <div class="grid" id="projectGrid">
+    <div class="card" data-category="ai">
+  <a 
+    href="file:///C:/Users/Moontasir/Documents/New%20folder/portfolio/sign-language-translator/index.html"
+    target="_blank"
+    class="project-link"
+  >
+    Sign-Language-Translator
+  </a>
+</div>
+
+    <div class="card" data-category="iot">smart kitchen Control and Security</div>
+    <div class="card" data-category="iot">Automation Ware-House Security</div>
+   <div class="card" data-category="iot">Smart Garden</div>
+    <div class="card" data-category="robotics">Line Follower Robot</div>
+    <div class="card" data-category="robotics">Bluetooth Cars Soccer</div>
+    <div class="card" data-category="robotics">WIFI/ESP (Remote) Car Soccer</div>
+    <div class="card" data-category="robotics">Obstacle Car</div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <div class="card">
+    <p>Email: <a href="mailto:moontasirmozumder@gmail.com">moontasirmozumder@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/moontasirmozumder">github.com/moontasirmozumder</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/moontasir-mozumder-7b4a87333/">LinkedIn</a></p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Moontasir Mozumder</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

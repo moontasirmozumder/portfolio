@@ -1,0 +1,150 @@
+/* THEME VARIABLES */
+:root {
+  --bg-color: #05080f;
+  --text-color: #eaeaea;
+  --accent: #00e5ff;
+  --binary-color: rgba(0,229,255,0.6);
+  --binary-fade: rgba(5,8,15,0.15);
+}
+
+body.light {
+  --bg-color: #f5f7fa;
+  --text-color: #111;
+  --binary-color: rgba(20,30,60,0.55);
+  --binary-fade: rgba(245,247,250,0.35);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: 0.4s;
+}
+
+.hidden { display: none; }
+
+/* Binary Canvas */
+#binaryRain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  position: relative;
+}
+
+.hero-content {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-photo img {
+  width: 320px;
+  filter: drop-shadow(0 0 30px rgba(0,229,255,0.35));
+}
+
+.intro {
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+#typing {
+  color: var(--accent);
+}
+
+#typing::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Navbar */
+.navbar {
+  text-align: center;
+  padding: 15px;
+  background: rgba(0,0,0,0.3);
+}
+
+.navbar a {
+  color: var(--accent);
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+/* Sections */
+.section {
+  padding: 60px 10%;
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  background: hwb(204 44% 21% / 0.897);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Filters */
+.filters button {
+  margin: 5px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+.filters .active {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 20px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.7;
+}
+
+/* Mobile */
+@media (max-width:768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-photo img {
+    width: 240px;
+  }
+}
+.project-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+}
+
+.project-link:hover {
+  color: var(--accent);
+}
