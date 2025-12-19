@@ -43,7 +43,7 @@ const texts = [
   "AI Engineer",
   "Image Processing Enthusiast",
   "Robotics Developer",
-  "Compiler Design Learner"
+  "Programming Learner"
 ];
 
 let t=0,c=0;

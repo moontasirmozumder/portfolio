@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Excel Import CGPA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Upload Excel Transcript</h1>
+
+<input type="file" id="excelFile" accept=".xlsx,.xls">
+<button onclick="importExcel()">Import Excel</button>
+<button onclick="exportExcel()">Download Excel</button>
+<button onclick="exportPDF()">Download PDF</button>
+
+<table id="sheet">
+  <thead>
+    <tr>
+      <th>Semester</th>
+      <th>Code</th>
+      <th>Subject</th>
+      <th>Credit</th>
+      <th>Grade</th>
+      <th>GP</th>
+      <th>QP</th>
+      <th>Retake (Yes/No)</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<h2>CGPA: <span id="cgpa">0.00</span></h2>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
