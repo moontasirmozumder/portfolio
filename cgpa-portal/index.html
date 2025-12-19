@@ -1,17 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Excel Import CGPA</title>
+  <title>CGPA Transcript Portal</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="pdfHeader">
+  <h1 id="pdfUniversity"></h1>
+  <p id="pdfDept"></p>
+  <p class="subtitle" id="pdfTitle"></p>
 
-<h1>Upload Excel Transcript</h1>
+  <div class="student-info">
+    <span id="pdfName"></span>
+    <span id="pdfId"></span>
+    <span id="pdfProgram"></span>
+  </div>
+</div>
+
+
+<h1>University CGPA & Transcript Portal</h1>
+
+
+<div id="studentForm">
+ <!-- <select id="uniName">
+    <option value="">Select University (optional)</option>
+    <option value="Atish Dipankar University of Science & Technology">
+      Atish Dipankar University of Science & Technology
+    </option>
+    <option value="Dhaka University">Dhaka University</option>
+    <option value="BUET">Bangladesh University of Engineering & Technology</option>
+  </select>-->
+  <input type="text" id="uniName" placeholder="University Name (optional)">
+
+  <!--<select id="deptName">
+    <option value="">Select Department (optional)</option>
+    <option value="Department of Computer Science & Engineering">
+      Department of Computer Science & Engineering
+    </option>
+    <option value="Department of Electrical & Electronic Engineering">
+      Department of Electrical & Electronic Engineering
+    </option>
+  </select>-->
+  <input type="text" id="deptName" placeholder="Department Name (optional)">
+
+  <input type="text" id="stuName" placeholder="Student Name (optional)">
+  <input type="text" id="stuId" placeholder="Student ID (optional)">
+  <input type="text" id="stuProgram" placeholder="Program (optional)">
+</div>
+
+
+
+
+<button id="themeToggle">🌙 Dark Mode</button>
+
 
 <input type="file" id="excelFile" accept=".xlsx,.xls">
 <button onclick="importExcel()">Import Excel</button>
 <button onclick="exportExcel()">Download Excel</button>
 <button onclick="exportPDF()">Download PDF</button>
+<button onclick="addRow()">➕ Add Subject</button>
+
 
 <table id="sheet">
   <thead>

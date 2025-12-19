@@ -1,6 +1,20 @@
 let totalCredit = 0;
 let totalQP = 0;
 
+const gradeMap = {
+  "A+": 4.0,
+  "A": 3.75,
+  "A-": 3.5,
+  "B+": 3.25,
+  "B": 3.0,
+  "B-": 2.75,
+  "C+": 2.5,
+  "C": 2.25,
+  "D": 2.0,
+  "F": 0.0
+};
+
+
 function importExcel() {
   const fileInput = document.getElementById("excelFile");
   if (!fileInput.files.length) {
@@ -54,20 +68,33 @@ function updateGradeColor(td) {
 }
 
 function calculateCGPA() {
-  totalCredit = 0;
-  totalQP = 0;
+  let totalCredit = 0;
+  let totalQP = 0;
 
   document.querySelectorAll("#sheet tbody tr").forEach(tr => {
     const tds = tr.querySelectorAll("td");
 
     const credit = parseFloat(tds[3].textContent) || 0;
-    const gp = parseFloat(tds[5].textContent) || 0;
-    const retake = tds[7].textContent.toLowerCase() === "yes";
 
+    // Grade → GP auto
+    const grade = tds[4].textContent.trim().toUpperCase();
+    let gp = gradeMap[grade];
+
+    if (gp === undefined) {
+      gp = parseFloat(tds[5].textContent) || 0;
+    }
+
+    tds[5].textContent = gp.toFixed(2);
+
+    // QP calculate
     const qp = credit * gp;
     tds[6].textContent = qp.toFixed(2);
 
+    // Grade color
     updateGradeColor(tds[4]);
+
+    // Retake check
+    const retake = tds[7].textContent.trim().toLowerCase() === "yes";
 
     if (!retake && credit > 0) {
       totalCredit += credit;
@@ -78,6 +105,7 @@ function calculateCGPA() {
   const cgpa = totalCredit === 0 ? 0 : (totalQP / totalCredit).toFixed(2);
   document.getElementById("cgpa").textContent = cgpa;
 }
+
 
 document.addEventListener("input", e => {
   if (e.target.closest("#sheet")) {
@@ -93,5 +121,73 @@ function exportExcel() {
 }
 
 function exportPDF() {
+  const uni = document.getElementById("uniName").value.trim();
+  const dept = document.getElementById("deptName").value.trim();
+  const name = document.getElementById("stuName").value.trim();
+  const id = document.getElementById("stuId").value.trim();
+  const program = document.getElementById("stuProgram").value.trim();
+
+  const hasHeaderData = uni || dept || name || id || program;
+
+  document.getElementById("pdfUniversity").textContent = hasHeaderData ? uni : "";
+  document.getElementById("pdfDept").textContent = hasHeaderData ? dept : "";
+  document.getElementById("pdfTitle").textContent = hasHeaderData ? "Academic Transcript" : "";
+
+  document.getElementById("pdfName").textContent = name ? `Name: ${name}` : "";
+  document.getElementById("pdfId").textContent = id ? `ID: ${id}` : "";
+  document.getElementById("pdfProgram").textContent = program ? `Program: ${program}` : "";
+
   window.print();
+}
+
+
+
+const toggleBtn = document.getElementById("themeToggle");
+
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  toggleBtn.textContent = "☀️ Light Mode";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    toggleBtn.textContent = "☀️ Light Mode";
+    localStorage.setItem("theme", "dark");
+  } else {
+    toggleBtn.textContent = "🌙 Dark Mode";
+    localStorage.setItem("theme", "light");
+  }
+});
+function addRow() {
+  const tbody = document.querySelector("#sheet tbody");
+  const tr = document.createElement("tr");
+
+  // Semester, Code, Subject, Credit, Grade
+  for (let i = 0; i < 5; i++) {
+    const td = document.createElement("td");
+    td.contentEditable = true;
+    td.textContent = "";
+    tr.appendChild(td);
+  }
+
+  // GP (auto or manual)
+  const gpTd = document.createElement("td");
+  gpTd.contentEditable = true;
+  tr.appendChild(gpTd);
+
+  // QP (auto calculated)
+  const qpTd = document.createElement("td");
+  qpTd.textContent = "0.00";
+  tr.appendChild(qpTd);
+
+  // Retake
+  const retakeTd = document.createElement("td");
+  retakeTd.contentEditable = true;
+  retakeTd.textContent = "No";
+  tr.appendChild(retakeTd);
+
+  tbody.appendChild(tr);
 }

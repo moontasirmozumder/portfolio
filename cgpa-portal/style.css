@@ -160,3 +160,135 @@ h2 {
     transform: translateY(0);
   }
 }
+/* ===== THEME TOGGLE ===== */
+#themeToggle {
+  float: right;
+  background: linear-gradient(135deg, #111827, #1f2933);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+body.dark #themeToggle {
+  background: linear-gradient(135deg, #e5e7eb, #cbd5f5);
+  color: #020617;
+}
+/* ===== PDF HEADER ===== */
+#pdfHeader {
+  display: none;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#pdfHeader h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+#pdfHeader p {
+  margin: 2px 0;
+  font-size: 13px;
+}
+
+.subtitle {
+  font-weight: bold;
+  margin-top: 8px;
+  text-decoration: underline;
+}
+
+.student-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+/* ===== PRINT STYLE ===== */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    padding: 10px;
+  }
+
+  button,
+  input,
+  #themeToggle {
+    display: none !important;
+  }
+
+  #pdfHeader {
+    display: block;
+  }
+
+  table {
+    box-shadow: none;
+    border-radius: 0;
+    width: 100%;
+  }
+
+  th {
+    background: #1f2937 !important;
+    color: white !important;
+    font-size: 12px;
+  }
+
+  td {
+    font-size: 11px;
+    border: 1px solid #d1d5db;
+  }
+
+  h2 {
+    background: none;
+    color: black;
+    box-shadow: none;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  td.grade-A\+ {
+    color: #16a34a !important;
+  }
+
+  td.grade-F {
+    color: #dc2626 !important;
+  }
+}
+#studentForm {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#studentForm input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  font-size: 13px;
+}
+
+/* Hide form in PDF */
+@media print {
+  #studentForm {
+    display: none;
+  }
+}
+#studentForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#studentForm input,
+#studentForm select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  font-size: 13px;
+}
+
+/* Hide form on PDF */
+@media print {
+  #studentForm {
+    display: none;
+  }
+}
