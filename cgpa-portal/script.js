@@ -23,7 +23,8 @@ function importExcel() {
   }
 
   const reader = new FileReader();
-  reader.onload = e => {
+
+  reader.onload = function (e) {
     const data = new Uint8Array(e.target.result);
     const workbook = XLSX.read(data, { type: "array" });
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
@@ -33,20 +34,31 @@ function importExcel() {
     tbody.innerHTML = "";
 
     rows.slice(1).forEach(row => {
-      if (row.length < 6) return;
+
+      // Only 5 column needed
+      if (row.length < 5) return;
 
       const tr = document.createElement("tr");
 
-      for (let i = 0; i < 7; i++) {
+      // 5 Excel columns
+      for (let i = 0; i < 5; i++) {
         const td = document.createElement("td");
         td.textContent = row[i] ?? "";
         td.contentEditable = true;
-
-        if (i === 4) updateGradeColor(td);
-
         tr.appendChild(td);
       }
 
+      // GP column
+      const gpTd = document.createElement("td");
+      gpTd.contentEditable = true;
+      tr.appendChild(gpTd);
+
+      // QP column
+      const qpTd = document.createElement("td");
+      qpTd.textContent = "0.00";
+      tr.appendChild(qpTd);
+
+      // Retake column
       const retakeTd = document.createElement("td");
       retakeTd.textContent = "No";
       retakeTd.contentEditable = true;
